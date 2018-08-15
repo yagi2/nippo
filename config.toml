@@ -1,4 +1,4 @@
-baseURL = "https://nippo.yagi2.com"
+baseURL = "https://nippo.yagi2.com/"
 languageCode = "ja"
 title = "日報"
 theme = "one"
