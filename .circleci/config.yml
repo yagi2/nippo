@@ -3,7 +3,7 @@ version: 2
 jobs:
   checkout_code:
     docker:
-      - image: circleci/golang:1.9.1
+      - image: circleci/golang:1.9
     working_directory: ~/hugo
     steps:
       - checkout
@@ -14,7 +14,7 @@ jobs:
 
   build:
     docker:
-      - image: circleci/golang:1.9.1
+      - image: circleci/golang:1.9
     working_directory: ~/hugo
     steps:
       - restore_cache:
