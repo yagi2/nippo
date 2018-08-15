@@ -39,7 +39,7 @@ jobs:
           key: hugo-cache-public
       - run:
           command: |
-            aws s3 sync public s3://$S3_BACKET > /dev/null 2>&1
+            aws
 
 workflows:
   version: 2
