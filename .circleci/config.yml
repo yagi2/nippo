@@ -8,17 +8,17 @@ jobs:
     steps:
       - checkout
       - save_cache:
-        key: hugo-cache-{{ epoch }}
-        paths:
+          key: hugo-cache-{{ epoch }}
+          paths:
             - ~/hugo
-            
+
   build:
     docker:
       - image: circleci/golang:1.9.1
     working_directory: ~/hugo
     steps:
       - restore_cache:
-        key:  hugo-cache
+          key: hugo-cache
       - run:
           command: |
             git submodule init
@@ -26,9 +26,9 @@ jobs:
             go get -v github.com/spf13/hugo
             hugo
       - save_cache:
-        key: hugo-cache-public-{{ epoch }}
-        paths:
-          - ~/hugo/public
+          key: hugo-cache-public-{{ epoch }}
+          paths:
+            - ~/hugo/public
 
   deploy:
     machine:
@@ -36,13 +36,12 @@ jobs:
     working_directory: ~/hugo/public
     steps:
       - restore_cache:
-        key: hugo-cache-public
+          key: hugo-cache-public
       - run:
           command: |
             aws s3 sync public s3://$S3_BACKET > /dev/null 2>&1
             aws cloudfront create-invalidation --distribution-id $CF_DIST_1 --paths "/*" > /dev/null 2>&1
             aws cloudfront create-invalidation --distribution-id $CF_DIST_2 --paths "/*" > /dev/null 2>&1
-            
 
 workflows:
   version: 2
