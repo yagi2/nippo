@@ -7,3 +7,6 @@ googleAnalytics="UA-28203375-10"
 pygmentsCodefences = true
 pygmentsCodefencesGuessSyntax = true
 pygmentsStyle = "pygments"
+
+[params]
+  navigation = ["archives.md"]
