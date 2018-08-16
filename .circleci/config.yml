@@ -24,8 +24,9 @@ jobs:
           key: hugo-cache
       - run:
           command: |
+            ls -la ./
             hugo version
-            hugo -v
+            hugo -v --config ./config.toml -t one
             ls -la public/posts/
       - save_cache:
           key: hugo-cache-public-{{ epoch }}
