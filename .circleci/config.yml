@@ -24,6 +24,7 @@ jobs:
           key: hugo-cache
       - run:
           command: |
+            hugo version
             hugo -v
             ls -la public/posts/
       - save_cache:
