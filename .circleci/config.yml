@@ -23,7 +23,9 @@ jobs:
           command: |
             git submodule update
             go get -v github.com/spf13/hugo
+            ls -la content/posts/
             hugo
+            ls -la public/posts/
       - save_cache:
           key: hugo-cache-public-{{ epoch }}
           paths:
