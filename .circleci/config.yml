@@ -24,7 +24,7 @@ jobs:
           key: hugo-cache
       - run:
           command: |
-            hugo
+            hugo -v -s
             ls -la public/posts/
       - save_cache:
           key: hugo-cache-public-{{ epoch }}

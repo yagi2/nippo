@@ -1,7 +1,8 @@
 baseURL = "https://nippo.yagi2.com/"
-languageCode = "ja"
+languageCode = "ja-jp"
 title = "日報"
 theme = "one"
+hasCJKLanguage = true
 googleAnalytics="UA-28203375-10"
 
 pygmentsCodefences = true
