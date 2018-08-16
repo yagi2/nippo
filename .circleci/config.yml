@@ -2,6 +2,8 @@ version: 2
 
 jobs:
   checkout_code:
+    machine:
+      enabled: true
     working_directory: ~/hugo
     steps:
       - checkout
