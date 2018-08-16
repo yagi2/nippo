@@ -8,7 +8,7 @@ jobs:
       - checkout
       - run: |
           git submodule sync
-          git submodule update --init
+          git submodule update
       - save_cache:
           key: hugo-cache-{{ .BuildNum }}
           paths:
