@@ -27,7 +27,7 @@ jobs:
             hugo
             ls -la public/posts/
       - save_cache:
-          key: hugo-cache-public-{{ epoch }}
+          key: hugo-cache-public-{{ .BuildNum }}
           paths:
             - ~/hugo/public
 
