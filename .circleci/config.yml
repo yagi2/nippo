@@ -1,18 +1,18 @@
 version: 2
-
 jobs:
   checkout_code:
+    docker:
+      - image: june29/golang-hugo
     working_directory: ~/hugo
     steps:
       - checkout
       - run: |
-        git submodule sync
-        git submodule update
+          git submodule sync
+          git submodule update
       - save_cache:
           key: hugo-cache-{{ .BuildNum }}
           paths:
             - ~/hugo
-
   build:
     docker:
       - image: june29/golang-hugo
@@ -22,15 +22,12 @@ jobs:
           key: hugo-cache
       - run:
           command: |
-            go get -v github.com/spf13/hugo
-            ls -la content/posts/
             hugo
             ls -la public/posts/
       - save_cache:
           key: hugo-cache-public-{{ .BuildNum }}
           paths:
             - ~/hugo/public
-
   deploy:
     machine:
       enabled: true
