@@ -1,35 +1,30 @@
 version: 2
-
 jobs:
   checkout_code:
     docker:
-      - image: circleci/golang:1.9
+      - image: june29/golang-hugo
     working_directory: ~/hugo
     steps:
       - checkout
+      - run: |
+          git submodule sync
+          git submodule update --init
       - save_cache:
-          key: hugo-cache-{{ epoch }}
+          key: hugo-cache-{{ .BuildNum }}
           paths:
             - ~/hugo
-
   build:
     docker:
-      - image: circleci/golang:1.9
+      - image: june29/golang-hugo
     working_directory: ~/hugo
     steps:
       - restore_cache:
           key: hugo-cache
       - run:
           command: |
-            git submodule sync
-            git submodule update --init
-            go get -v github.com/spf13/hugo
-            ls -la content/posts/
-            sudo cp /usr/share/zoneinfo/Japan /etc/localtime
             hugo
-            ls -la public/posts/
       - save_cache:
-          key: hugo-cache-public-{{ epoch }}
+          key: hugo-cache-public-{{ .BuildNum }}
           paths:
             - ~/hugo/public
 
