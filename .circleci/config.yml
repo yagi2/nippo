@@ -2,8 +2,8 @@ version: 2
 
 jobs:
   checkout_code:
-    machine:
-      enabled: true
+    docker:
+      - image: june29/golang-hugo
     working_directory: ~/hugo
     steps:
       - checkout
