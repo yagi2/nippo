@@ -15,17 +15,17 @@ jobs:
   build:
     docker:
       - image: circleci/golang:1.9
-        environment:
-          TZ: Asia/Tokyo
     working_directory: ~/hugo
     steps:
       - restore_cache:
           key: hugo-cache
       - run:
           command: |
-            git submodule update
+            git submodule sync
+            git submodule update --init
             go get -v github.com/spf13/hugo
             ls -la content/posts/
+            sudo cp /usr/share/zoneinfo/Japan /etc/localtime
             hugo
             ls -la public/posts/
       - save_cache:
