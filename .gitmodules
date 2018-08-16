@@ -1,0 +1,4 @@
+[submodule "themes/one"]
+	path = themes/one
+	url = https://github.com/yagi2/hugo-theme-one.git
+	branch = master

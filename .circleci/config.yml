@@ -9,7 +9,7 @@ jobs:
       - checkout
       - run: |
           git submodule sync
-          git submodule update
+          git submodule update --init
       - save_cache:
           key: hugo-cache-{{ epoch }}
           paths:
