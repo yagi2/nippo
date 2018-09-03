@@ -3,7 +3,7 @@ version: 2
 jobs:
   checkout_code:
     docker:
-      - image: june29/golang-hugo
+      - image: yagi2/go-hugo-aws
     working_directory: ~/hugo
     steps:
       - checkout
@@ -17,7 +17,7 @@ jobs:
 
   build:
     docker:
-      - image: june29/golang-hugo
+      - image: yagi2/go-hugo-aws
     working_directory: ~/hugo
     steps:
       - restore_cache:
@@ -32,7 +32,7 @@ jobs:
 
   deploy:
     docker:
-      - image: june29/golang-hugo
+      - image: yagi2/go-hugo-aws
     working_directory: ~/hugo
     steps:
       - restore_cache:
