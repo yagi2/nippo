@@ -31,8 +31,8 @@ jobs:
             - ~/hugo/public
 
   deploy:
-    machine:
-      enabled: true
+    docker:
+      - image: june29/golang-hugo
     working_directory: ~/hugo
     steps:
       - restore_cache:
