@@ -3,7 +3,7 @@ version: 2
 jobs:
   checkout_code:
     docker:
-      - image: circleci/golang:1.9
+      - image: june29/golang-hugo
     working_directory: ~/hugo
     steps:
       - checkout
@@ -17,14 +17,13 @@ jobs:
 
   build:
     docker:
-      - image: circleci/golang:1.9
+      - image: june29/golang-hugo
     working_directory: ~/hugo
     steps:
       - restore_cache:
           key: hugo-cache
       - run:
           command: |
-            go get -v github.com/spf13/hugo
             hugo
       - save_cache:
           key: hugo-cache-public-{{ epoch }}
